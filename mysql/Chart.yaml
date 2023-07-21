@@ -1,0 +1,8 @@
+apiVersion: v1
+appVersion: "v1"
+name: mysql
+description: mysql:5.7 deploy
+version: 0.1.0
+maintainers:
+- name: Aladin Ben Lagha
+  email: Aladin.lagha@zaytouna-bank.com

@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image_prometheus:
+  container:
+  containerVersion:
+
+
+image_grafana:
+  container:
+  containerVersion:
+
+

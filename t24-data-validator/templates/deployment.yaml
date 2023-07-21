@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t24-data-validator-deployment
+spec:
+  selector:
+    matchLabels:
+      app: t24-data-validator-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: t24-data-validator-app
+    spec:
+      containers:
+      - env:
+        - name: SERVER_PORT
+          valueFrom:
+            secretKeyRef:
+              key: server.port
+              name: t24-data-validator-secret
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              key: spring.datasource.url
+              name: t24-data-validator-secret
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: spring.datasource.username
+              name: t24-data-validator-secret
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: spring.datasource.password
+              name: t24-data-validator-secret
+        image: "{{ .Values.image.container }}:{{ .Chart.AppVersion }}"
+        imagePullPolicy: Never
+        name: t24-data-validator-app
+        ports:
+        - containerPort: 8081
+          protocol: TCP

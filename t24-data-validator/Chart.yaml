@@ -1,0 +1,8 @@
+apiVersion: v1
+appVersion: "v1"
+name: t24-data-validator
+description: validator service for ztb
+version: 0.1.0
+maintainers:
+- name: Aladin Ben Lagha
+  email: Aladin.lagha@zaytouna-bank.com

@@ -1,0 +1,12 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: t24-data-retrieval-route-config
+spec:
+  service:
+    name: t24-data-retrieval-service
+  routes:
+  - predicates:
+    - Path=/retrieval/**
+    filters:
+    - StripPrefix=1

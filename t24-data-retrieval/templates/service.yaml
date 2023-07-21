@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: t24-data-retrieval-service
+spec:
+  ports:
+  - nodePort: 31111
+    port: 8085
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: t24-data-retrieval-app
+  type: NodePort
+

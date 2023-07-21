@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t24-data-retrieval-deployment
+spec:
+  selector:
+    matchLabels:
+      app: t24-data-retrieval-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: t24-data-retrieval-app
+    spec:
+      containers:
+      - name: t24-data-retrieval-app
+        image: "{{ .Values.image.container }}:{{ .Chart.AppVersion }}"
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            secretKeyRef:
+              name: t24-data-retrieval-secret
+              key: server.port
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: t24-data-retrieval-secret
+              key: spring.datasource.url
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: t24-data-retrieval-secret
+              key: spring.datasource.username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: t24-data-retrieval-secret
+              key: spring.datasource.password

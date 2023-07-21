@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image_elasticsearch:
+  container: "docker.elastic.co/elasticsearch/elasticsearch"
+  containerVersion: 6.6.1
+
+
+image_kibana:
+  container: "docker.elastic.co/kibana/kibana"
+  containerVersion: 6.6.1
+
+image_fluentd:
+  container: "fluent/fluentd-kubernetes-daemonset"
+  containerVersion: v1-debian-elasticsearch

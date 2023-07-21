@@ -1,0 +1,6 @@
+replicaCount: 1
+
+image:
+  container: "t24-data-validator-app"
+  pullPolicy: IfNotPresent
+

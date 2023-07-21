@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+    app.kubernetes.io/name: mysql
+data:
+  primary.cnf: "# Apply this config only on the primary.\n[mysqld]\nlog-bin    \n"
+  replica.cnf: "# Apply this config only on replicas.\n[mysqld]\nsuper-read-only    \n#magic___^_^___line\n"

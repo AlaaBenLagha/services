@@ -1,0 +1,6 @@
+replicaCount: 1
+
+image:
+  container: "t24-front-app-nginx"
+  pullPolicy: IfNotPresent
+
